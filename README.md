@@ -1,47 +1,77 @@
 # 🥄 Jobspoon - Spring Backend
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/Roto90-BackEnd/jobspoon-spring-backend)
-[![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 [![Java](https://img.shields.io/badge/Java-17-orange)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x.x-green)](https://spring.io/projects/spring-boot)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/Roto90-BackEnd/jobspoon-spring-backend)
+[![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
-**[Jobspoon은 IT 취업 준비생들을 위한 스터디 관리 및 모의 면접 플랫폼입니다.]**
-
+Jobspoon은 IT 취업 준비생을 위한 **AI 면접 솔루션 및 스터디 플랫폼**입니다.
 본 레포지토리는 Jobspoon 서비스의 Spring Boot 기반 백엔드 API 서버입니다.
 
-## ✨ 주요 기능 (Features)
 
-* **🧑‍🤝‍🧑 스터디 관리:** 스터디 그룹 생성, 참여, 검색 및 관리 기능
-* **📅 일정 관리:** 스터디별 일정 등록 및 캘린더 연동 (e.g., Google Calendar)
-* **🔖 출석 관리:** [e.g., 스터디 리더가 일정별 멤버의 출석/결석을 관리]
-* **💼 모의 면접:** [e.g., CS/직무 질문 기반의 모의 면접 세트 생성 및 관리]
-* **✍️ 신청 관리:** [e.g., 스터디 리더가 가입 신청을 수락/거절]
-* **[추가 기능 1]**: [e.g., 사용자 인증 (JWT 기반)]
-* **[추가 기능 2]**: [e.g., 공지사항 및 게시판]
+## ✨ 4대 핵심 기능 (Features)
+
+Jobspoon은 4개의 핵심 도메인을 중심으로 유기적으로 연결되어 있습니다.
+
+### 1. 🤖 AI 모의면접 (Main Service)
+> "AI로 검증하는 면접 솔루션"
+
+AI를 통해 사용자의 면접을 분석하고 피드백을 제공하는 핵심 서비스입니다.
+* [e.g., 면접 세트(질문) 생성 및 관리]
+* [e.g., 면접 영상/음성 데이터 S3 업로드 API]
+* [e.g., AI 분석 결과(STT 텍스트, 점수) 저장 및 조회]
+* [e.g., 면접 유형(CS, 직무, 인성)별 질문 관리]
+
+### 2. 🧑‍🤝‍🧑 스터디 모임 (Retention)
+> "함께 성장하는 스터디 커뮤니티"
+
+학습 리텐션을 유도하고 커뮤니티를 활성화하는 서브 도메인입니다.
+* 스터디 그룹 생성, 검색, 참여 및 관리
+* 스터디별 공지사항 및 캘린더 기반 **일정 관리**
+* 스터디 리더를 위한 **신청 관리** (가입 승인/거절)
+* 일정별 **출석 관리** (멤버별 출석/결석/대기 상태 처리)
+
+### 3. 🧠 스푼워드 (Learning)
+> "매일매일 학습하는 IT 지식 퀴즈"
+
+지속적인 학습 동기를 부여하는 퀴즈 및 학습 콘텐츠입니다.
+* [e.g., 일일/주간 CS/직무 퀴즈 제공]
+* [e.g., 사용자 답변 제출 및 정답 처리]
+* [e.g., 퀴즈 기반 학습 점수 및 랭킹 시스템]
+
+### 4. 📊 마이페이지 (Profile & Stats)
+> "한눈에 보는 나의 성장 기록"
+
+모든 서비스의 활동 데이터를 통계로 관리하고 프로필을 제공합니다.
+* 사용자 프로필(닉네임, 프로필 이미지) 수정
+* 서비스별(면접, 스푼워드) 획득 점수 및 통계 데이터 집계
+* 나의 스터디 현황 및 학습 캘린더(일정, 출석 현황) 조회
 
 ## 🛠️ 기술 스택 (Tech Stack)
 
-| Category | Stack |
-| :--- | :--- |
-| **Language** | Java [17] |
-| **Framework** | Spring Boot [3.x.x], Spring Security |
-| **Database** | [PostgreSQL / MySQL / H2] |
-| **ORM** | Spring Data JPA (Hibernate) |
-| **Build** | [Gradle / Maven] |
-| **Auth** | JWT (JSON Web Token) |
-| **API Docs** | SpringDoc OpenAPI (Swagger UI) |
-| **Etc** | [e.g., Lombok, AWS S3, Redis, ...] |
+| Category | Stack | Description |
+| :--- | :--- | :--- |
+| **Language** | Java [17] | |
+| **Framework** | Spring Boot [3.x.x] | |
+| **Security** | Spring Security | [e.g., JWT 기반 인증/인가] |
+| **Database** | [PostgreSQL / MySQL] | |
+| **ORM** | Spring Data JPA | |
+| **Build** | [Gradle] | |
+| **API Docs** | SpringDoc OpenAPI 3.0 | ` /swagger-ui.html ` |
+| **Etc** | Lombok | |
+| | [AWS S3] | [e.g., 면접 영상, 프로필 이미지 저장] |
+| | [Redis] | [e.g., 랭킹, 캐시 관리] |
 
-## 🚀 시작하기 (Getting Started)
+## 🚀 로컬 실행 방법 (Getting Started)
 
 ### 1. 전제 조건 (Prerequisites)
 
 * Java `[17]` (JDK 17)
 * `[Gradle]`
-* `[PostgreSQL]` (or `MySQL`)
-* IDE (e.g., IntelliJ, VSCode)
+* `[PostgreSQL / MySQL]`
+* IDE (e.g., IntelliJ)
 
-### 2. 로컬에서 실행하기 (Running Locally)
+### 2. 실행 가이드
 
 1.  **레포지토리 클론**
     ```bash
@@ -51,34 +81,88 @@
 
 2.  **설정 파일 생성 (`application.yml`)**
 
-    `src/main/resources/` 경로에 `application.yml` 파일을 생성합니다.
-    (보안을 위해 `application.yml`은 .gitignore에 포함되어야 합니다. `application.yml.example` 파일을 만들어두는 것을 권장합니다.)
+    `src/main/resources/` 경로에 `application.yml` 파일을 생성하고, 프로젝트에 필요한 설정을 입력합니다. (보안 정보가 포함되므로 `.gitignore`에 반드시 추가합니다.)
 
     **`application.yml` 예시:**
     ```yaml
     spring:
       datasource:
-        url: jdbc:postgresql://localhost:5432/[DB_NAME]
-        username: [DB_USER]
-        password: [DB_PASSWORD]
-        driver-class-name: org.postgresql.Driver
+        url: jdbc:[db_type]://localhost:5432/[db_name]
+        username: [db_user]
+        password: [db_password]
+        driver-class-name: [db_driver]
 
       jpa:
         hibernate:
-          ddl-auto: [update / validate / none] # (로컬 개발 시 'update' 또는 'create')
+          ddl-auto: [update / validate] # (로컬 개발 시 'update' 또는 'create')
         properties:
           hibernate:
             format_sql: true
             show_sql: true
-        defer-datasource-initialization: true
       
     # JWT 시크릿 키 (필수)
     jwt:
       secret: [base64로_인코딩된_시크릿_키]
       
-    # Swagger (SpringDoc)
+    # SpringDoc (Swagger)
     springdoc:
       swagger-ui:
         path: /swagger-ui.html
       api-docs:
         path: /v3/api-docs
+    ```
+
+3.  **빌드 및 실행**
+    ```bash
+    ./gradlew build
+    java -jar build/libs/[생성된_jar_파일_이름].jar
+    ```
+    *또는 IDE에서 `JobspoonSpringBackendApplication` 클래스를 직접 실행합니다.*
+
+## 📖 API 문서 (API Documentation)
+
+프로젝트 실행 후, 아래 엔드포인트에서 API 명세(Swagger)를 실시간으로 확인할 수 있습니다.
+
+* **Swagger UI:** `http://localhost:8080/swagger-ui.html`
+
+## 🏛️ 데이터베이스 스키마 (Database Schema)
+
+[ERD 다이어그램 이미지를 여기에 삽입하세요. (Notion, draw.io 등)]
+
+*(ERD 예시: 스터디 모임 도메인)*
+```mermaid
+erDiagram
+    MEMBER ||--o{ STUDY_MEMBER : "참여"
+    STUDY_ROOM ||--|{ STUDY_MEMBER : "포함"
+    STUDY_ROOM ||--|{ STUDY_SCHEDULE : "일정"
+    STUDY_SCHEDULE ||--|{ SCHEDULE_ATTENDANCE : "출석"
+    STUDY_MEMBER ||--|{ SCHEDULE_ATTENDANCE : "대상"
+
+    MEMBER {
+        Long id PK
+        String email
+        String nickname
+    }
+    STUDY_ROOM {
+        Long id PK
+        String title
+        Long leader_id FK
+    }
+    STUDY_MEMBER {
+        Long id PK
+        Long member_id FK
+        Long study_room_id FK
+        String role
+    }
+    STUDY_SCHEDULE {
+        Long id PK
+        Long study_room_id FK
+        String title
+        Timestamp start_time
+    }
+    SCHEDULE_ATTENDANCE {
+        Long id PK
+        Long schedule_id FK
+        Long member_id FK
+        String status
+    }

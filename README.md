@@ -4,6 +4,7 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.3-green)](https://spring.io/projects/spring-boot)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/Roto90-BackEnd/jobspoon-spring-backend)
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+[![Project Period](https://img.shields.io/badge/Project%20Period-2025.07%20~%202025.10-informational)](https://github.com/Roto90-BackEnd/jobspoon-spring-backend)
 
 Jobspoon은 IT 취업 준비생을 위한 **AI 면접 솔루션 및 스터디 플랫폼**입니다.
 본 레포지토리는 Jobspoon 서비스의 Spring Boot 기반 백엔드 API 서버입니다.

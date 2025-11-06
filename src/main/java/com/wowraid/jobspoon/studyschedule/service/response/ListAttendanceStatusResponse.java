@@ -14,7 +14,7 @@ public class ListAttendanceStatusResponse {
     private ListAttendanceStatusResponse(ScheduleAttendance attendance) {
         this.studyMemberId = attendance.getStudyMember().getId();
         this.nickname = attendance.getStudyMember().getAccountProfile().getNickname();
-        this.status = attendance.getStatus().getKoreanAttendanceStatus();
+        this.status = attendance.getStatus().name();
     }
 
     public static ListAttendanceStatusResponse from(ScheduleAttendance attendance) {

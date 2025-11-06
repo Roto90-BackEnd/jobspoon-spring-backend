@@ -1,7 +1,7 @@
 # 🥄 Jobspoon - Spring Backend
 
 [![Java](https://img.shields.io/badge/Java-17-orange)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x.x-green)](https://spring.io/projects/spring-boot)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.3-green)](https://spring.io/projects/spring-boot)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/Roto90-BackEnd/jobspoon-spring-backend)
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 

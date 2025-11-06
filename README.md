@@ -54,14 +54,13 @@ AI를 통해 사용자의 면접을 분석하고 피드백을 제공하는 핵�
 | **Language** | Java [17] | |
 | **Framework** | Spring Boot [3.5.3] | |
 | **Security** | Spring Security | 커스텀 필터 기반 토큰 인증/인가 |
-| **Auth** | Redis-based Tokens | (Opaque Token) JWT 대신 Redis를 세션/토큰 저장소로 활용 |
+| **In-Memory** | Redis | 인증 토큰 저장소(Opaque Token), 랭킹, 캐시관리 |
 | **Database** | MySQL | 메인 데이터베이스 |
 | **ORM** | Spring Data JPA | |
 | **Build** | [Gradle] | |
 | **API Docs** | SpringDoc OpenAPI 3.0 | ` /swagger-ui.html ` |
 | **Etc** | Lombok | |
 | | [AWS S3] | [e.g., 프로필 이미지, 신고 파일 등] |
-| | [Redis] | [e.g., 랭킹, 캐시 관리] |
 
 ## 🚀 로컬 실행 방법 (Getting Started)
 

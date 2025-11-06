@@ -52,14 +52,15 @@ AI를 통해 사용자의 면접을 분석하고 피드백을 제공하는 핵�
 | Category | Stack | Description |
 | :--- | :--- | :--- |
 | **Language** | Java [17] | |
-| **Framework** | Spring Boot [3.x.x] | |
-| **Security** | Spring Security | [e.g., JWT 기반 인증/인가] |
-| **Database** | [PostgreSQL / MySQL] | |
+| **Framework** | Spring Boot [3.5.3] | |
+| **Security** | Spring Security | 커스텀 필터 기반 토큰 인증/인가 |
+| **Auth** | Redis-based Tokens | (Opaque Token) JWT 대신 Redis를 세션/토큰 저장소로 활용 |
+| **Database** | MySQL | 메인 데이터베이스 |
 | **ORM** | Spring Data JPA | |
 | **Build** | [Gradle] | |
 | **API Docs** | SpringDoc OpenAPI 3.0 | ` /swagger-ui.html ` |
 | **Etc** | Lombok | |
-| | [AWS S3] | [e.g., 면접 영상, 프로필 이미지 저장] |
+| | [AWS S3] | [e.g., 프로필 이미지, 신고 파일 등] |
 | | [Redis] | [e.g., 랭킹, 캐시 관리] |
 
 ## 🚀 로컬 실행 방법 (Getting Started)
@@ -68,10 +69,11 @@ AI를 통해 사용자의 면접을 분석하고 피드백을 제공하는 핵�
 
 * Java `[17]` (JDK 17)
 * `[Gradle]`
-* `[PostgreSQL / MySQL]`
-* IDE (e.g., IntelliJ)
+* `[MySQL]`
+* `[Redis]`
+* `IDE (IntelliJ)`
 
-### 2. 실행 가이드
+### 2. 실행 가이드 (Running Locally)
 
 1.  **레포지토리 클론**
     ```bash
@@ -79,45 +81,38 @@ AI를 통해 사용자의 면접을 분석하고 피드백을 제공하는 핵�
     cd jobspoon-spring-backend
     ```
 
-2.  **설정 파일 생성 (`application.yml`)**
+2.  **보안 설정 파일 생성 (`.env`)**
 
-    `src/main/resources/` 경로에 `application.yml` 파일을 생성하고, 프로젝트에 필요한 설정을 입력합니다. (보안 정보가 포함되므로 `.gitignore`에 반드시 추가합니다.)
+    본 프로젝트는 모든 민감 정보(DB비밀번호, API키 등)를 `.env` 파일로 관리합니다.
+    레포지토리에 포함된 **`.env.example`** 파일을 **`.env`** 파일로 복사하세요.
 
-    **`application.yml` 예시:**
-    ```yaml
-    spring:
-      datasource:
-        url: jdbc:[db_type]://localhost:5432/[db_name]
-        username: [db_user]
-        password: [db_password]
-        driver-class-name: [db_driver]
-
-      jpa:
-        hibernate:
-          ddl-auto: [update / validate] # (로컬 개발 시 'update' 또는 'create')
-        properties:
-          hibernate:
-            format_sql: true
-            show_sql: true
-      
-    # JWT 시크릿 키 (필수)
-    jwt:
-      secret: [base64로_인코딩된_시크릿_키]
-      
-    # SpringDoc (Swagger)
-    springdoc:
-      swagger-ui:
-        path: /swagger-ui.html
-      api-docs:
-        path: /v3/api-docs
+    ```bash
+    cp .env.example .env
     ```
 
-3.  **빌드 및 실행**
+3.  **`.env` 파일 수정**
+
+    방금 생성한 `.env` 파일을 열어, 본인의 로컬 개발 환경에 맞게 `[ ]`로 표시된 값들을 채워주세요. (e.g., 로컬 DB 비밀번호, Kakao/GitHub API 키 등)
+
+    ```ini
+    # .env
+    SPRING_DATABASE_USER=my_local_db_user
+    SPRING_DATABASE_PASSWORD=my_local_db_password
+    SPRING_DATA_REDIS_PASSWORD=my_local_redis_password
+    KAKAO_CLIENT_ID=abcdefg...
+    ...
+    ```
+
+4.  **빌드 및 실행**
     ```bash
     ./gradlew build
     java -jar build/libs/[생성된_jar_파일_이름].jar
     ```
     *또는 IDE에서 `JobspoonSpringBackendApplication` 클래스를 직접 실행합니다.*
+
+5.  **확인**
+    * 서버가 `http://localhost:8080` (기본값)에서 실행됩니다.
+    * API 문서는 `http://localhost:8080/swagger-ui.html` 에서 확인합니다.
 
 ## 📖 API 문서 (API Documentation)
 

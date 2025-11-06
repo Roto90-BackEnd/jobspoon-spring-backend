@@ -9,12 +9,12 @@ import lombok.RequiredArgsConstructor;
 public class ListAttendanceStatusResponse {
     private final Long studyMemberId;
     private final String nickname;
-    private final AttendanceStatus status;
+    private final String status;
 
     private ListAttendanceStatusResponse(ScheduleAttendance attendance) {
         this.studyMemberId = attendance.getStudyMember().getId();
         this.nickname = attendance.getStudyMember().getAccountProfile().getNickname();
-        this.status = attendance.getStatus();
+        this.status = attendance.getStatus().getKoreanAttendanceStatus();
     }
 
     public static ListAttendanceStatusResponse from(ScheduleAttendance attendance) {

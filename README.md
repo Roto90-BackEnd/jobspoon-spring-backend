@@ -125,13 +125,6 @@ AI를 통해 사용자의 면접을 분석하고 피드백을 제공하는 핵�
 **[향후 계획]**
 * Spring Boot가 안정적인 버전(e.g., `3.4.x` stable)으로 업데이트되거나, `springdoc` 라이브러리의 다음 버전이 릴리즈되어 호환성 문제가 해결되면 Swagger UI를 복구할 예정입니다.
 
-## 🏛️ 데이터베이스 스키마 (Database Schema)
-
-본 프로젝트의 전체 데이터베이스 ERD는 아래와 같습니다.
-(이 다이어그램은 `DB.mwb` 파일로부터 생성되었습니다.)
-
-![Jobspoon ERD](erd.png) 
----
 
 ## 🏛️ 데이터베이스 스키마 (Database Schema)
 
